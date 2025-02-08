@@ -32,14 +32,14 @@ if(WIN32)
         shell32
     )
 elseif(UNIX AND NOT APPLE)
-    #TODO: If Linux do not forget to download raylib for linux and put it into /libs/raylib-5.5 folder
+    #TODO: do not forget to install GL and other dependency, read https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux
     add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
     if (CMAKE_BUILD_TYPE STREQUAL Release) 
         set(SUBSYSTEM_LINKER_OPTIONS "-mwindows")   
     endif()
     target_link_options(${PROJECT_NAME} PRIVATE ${SUBSYSTEM_LINKER_OPTIONS})
     target_link_libraries(${PROJECT_NAME} 
-        "${CMAKE_SOURCE_DIR}/libs/raylib-5.5/lib/raylib.lib"
+        "${CMAKE_SOURCE_DIR}/libs/raylib-5.5-linux-amd64/lib/libraylib.so"
         GL      # OpenGL
         m       # Math library
         pthread # Threads
